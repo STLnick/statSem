@@ -1,0 +1,6 @@
+#ifndef SCANNER_SHOWHELP_HPP
+#define SCANNER_SHOWHELP_HPP
+
+void showHelp();
+
+#endif // !SCANNER_SHOWHELP_HPP

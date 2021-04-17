@@ -1,0 +1,6 @@
+#ifndef SCANNER_PARSE_COMMAND_LINE_OPTS_HPP
+#define SCANNER_PARSE_COMMAND_LINE_OPTS_HPP
+
+int parseCommandLineOpts(int argc, char **argv);
+
+#endif // !SCANNER_PARSE_COMMAND_LINE_OPTS_HPP
