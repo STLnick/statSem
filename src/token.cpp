@@ -8,14 +8,9 @@ void printToken(TokenRecord *token) {
     << " at column " << token->charCol << std::endl;
 }
 
+static int startCol = 1;
+
 TokenRecord *initToken(std::string name, tokenID tokenId, int lineNum, int charCol) {
-    static int startCol = 1;
-
-    if (name == "RESET_START_COL") {
-        startCol = 1;
-        return NULL;
-    }
-
     TokenRecord *newToken = new TokenRecord();
     newToken->stringVal = name;
     newToken->tokenId = tokenId;
@@ -27,5 +22,5 @@ TokenRecord *initToken(std::string name, tokenID tokenId, int lineNum, int charC
 }
 
 void resetStartCol() {
-    TokenRecord *throwaway = initToken("RESET_START_COL", ID_tk, 0, 1);
+    startCol = 1;
 }
