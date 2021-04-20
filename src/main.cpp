@@ -12,6 +12,8 @@
 #include "parseCommandLineOpts.hpp"
 #include "parser.hpp"
 #include "scanner.hpp"
+#include "statSem.hpp"
+#include "statSemStack.hpp"
 #include "TokenRecord.hpp"
 #include "token.hpp"
 #include "tree.hpp"
@@ -29,33 +31,32 @@ int main(int argc, char **argv) {
             return 0;
     }
 
-    // Setup / validate file to read from using keyboard input, input redirection or command line argument
+    // Validate file to read from
     init(argc, argv, fileNameToRead);
 
-    // Setup a file stream to assign src in scanner
+    // Read file source into string
     fileNameToRead += ".fs";
-
     std::ifstream srcFile(fileNameToRead.c_str());
-
     std::string srcString;
     readSrcIntoString(srcFile, srcString);
 
-    // Initialize the Scanner
+    /* ------------------------------------ */
+    // Scanner + Parser
+    /* ------------------------------------ */
     Scanner *scanner = initScanner(srcString);
+    //node *root = NULL;
+    node *root = parser(scanner);
+    //printPreorder(root);
 
     /* ------------------------------------ */
-    // Test Parser
+    // Static Semantics
     /* ------------------------------------ */
-
-    node *root = NULL;
-    root = parser(scanner);
-    printPreorder(root);
+    StatSemStack stack;
+    statSem(root, stack, 0);
 
     std::cout << "\n\nFile parsed successfully! Booyah!\n\n";
 
-    /* ------------------------------------ */
     // Free memory
-    /* ------------------------------------ */
     free(scanner);
     srcFile.close();
 
