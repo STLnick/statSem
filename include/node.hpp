@@ -6,10 +6,11 @@
 #define PARSER_NODE_HPP
 
 #include <vector>
+#include "TokenRecord.hpp"
 
 struct node {
     std::string label;
-    std::vector<std::string> tokens;
+    std::vector<TokenRecord> tokens;
     node* ntOne;
     node* ntTwo;
     node* ntThree;

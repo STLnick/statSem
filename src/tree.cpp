@@ -20,7 +20,7 @@ void printPreorder(node* treeNode, int level = 0) {
     // Print tokens by node label
     std::cout << "\e[1m" << std::string(level * 2, ' ') + treeNode->label + ": " << "\e[0m";
     for(int i = 0; i < treeNode->tokens.size(); i++) {
-        std::cout << treeNode->tokens[i] << " ";
+        std::cout << treeNode->tokens[i].stringVal << " ";
     }
     std::cout << std::endl;
 
