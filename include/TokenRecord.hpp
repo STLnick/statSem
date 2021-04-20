@@ -8,14 +8,6 @@
 
 #include <string>
 
-/* Single char tokens */
-// = + - / * ( ) { } [ ] % . , ; :
-
-/* Double char tokens */
-// == => := =<
-
-// TODO: create a map to the first() of a token for error output
-
 enum tokenID {
     ID_tk,
     NUM_tk,
