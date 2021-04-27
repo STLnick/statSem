@@ -52,7 +52,9 @@ int main(int argc, char **argv) {
     // Static Semantics
     /* ------------------------------------ */
     StatSemStack stack;
+    std::cout << "main() 1" << std::endl;
     statSem(root, stack, 0);
+    std::cout << "main() 2" << std::endl;
 
 
     /* ------------------------------------ */

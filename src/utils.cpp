@@ -1,6 +1,8 @@
 //
 // Created by Nick Ray on 2/21/21.
 //
+
+#include <cstdlib>
 #include <istream>
 #include <string>
 #include <time.h>
