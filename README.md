@@ -1,6 +1,6 @@
 # Static Semantics
 
-## Compilers - P3
+## Compilers - P3 - Local Option
 
 **Version Control**:
 GitHub repo: https://github.com/STLnick/statSem
@@ -32,10 +32,13 @@ Cloned from [parser](https://github.com/STLnick/parser) to get all of that code 
 `p2g1.fs` of provided test files
 
 ```
-$$ p2g1 $$
+$$ p3g1 $$
+data x := 5 ;
 main
 begin
-getter x ;
+data y := 67 ;
+outter y ;
+assign x := y ;
 end
 ```
 
@@ -43,24 +46,38 @@ end
 `p2g6.fs` of provided test files
 
 ```
-$$ p2g6 $$
-data a := 5 ;
-data b := 6 ;
-data c := 7 ;
+$$ p3g2 $$
+data z := 321 ;
+data y := 567 ;
 main
 begin
-    outter ( 2 * 3 / 5 + 7 - * 11 + ( 13 * * 17 ) ) ;
+data x := 5 ;
+loop [ y => z ]
+  begin
+  data c := 3 ;
+     begin
+     proc c ; 
+     end
+  end ;
+outter x ;
 end
 ```
+
+### Semantics
+Essentially following the rules of `C` for semantic rules.
 
 
 ---
 
 **What Works**:
-
+- Semantics are enforced locally
+    - Define variables once
+    - Follows C-like rules of scoping
+- Errors output helpful messages
+- Displays awesome messages on successful parsing
 
 **What Doesn't Work**:
-
+- We'll find out...
 
 ---
 ### Commit Log
