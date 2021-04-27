@@ -9,6 +9,6 @@
 #include "statSemStack.hpp"
 
 void setIsGlobalFalse();
-void statSem(node *treeNode, StatSemStack stack, int level);
+void statSem(node *treeNode, StatSemStack &stack, int level);
 
 #endif //STATSEM_STATSEM_HPP

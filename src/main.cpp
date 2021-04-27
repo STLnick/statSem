@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
     Scanner *scanner = initScanner(srcString);
     //node *root = NULL;
     node *root = parser(scanner);
-    //printPreorder(root);
+    printPreorder(root);
 
     /* ------------------------------------ */
     // Static Semantics

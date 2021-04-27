@@ -17,9 +17,12 @@ public:
     bool getHasNotBeenSetFalse();
     void setHasNotBeenSetFalse(bool val);
     void setIsGlobal(bool val);
-    void push(StatSemStackItem &item);
+    void push(StatSemStackItem *newItem);
+    void pushBlock();
     void pop();
     int find(std::string bufferName);
+    bool isNotOnBlockStop();
+    int getItemsSize();
 };
 
 #endif //STATSEM_STATSEMSTACK_HPP

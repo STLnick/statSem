@@ -24,8 +24,17 @@ void StatSemStack::setIsGlobal(bool val) {
     isGlobal = val;
 }
 
-void StatSemStack::push(StatSemStackItem &item) {
-    items.push_back(&item);
+void StatSemStack::push(StatSemStackItem *newItem) {
+    items.push_back(newItem);
+}
+
+void StatSemStack::pushBlock() {
+    StatSemStackItem* block = new StatSemStackItem(
+            "BLOCK_STOP",
+            -1,
+            -1
+    );
+    this->push(block);
 }
 
 void StatSemStack::pop() {
@@ -42,4 +51,12 @@ int StatSemStack::find(std::string bufferName) {
     }
 
     return -1;
+}
+
+bool StatSemStack::isNotOnBlockStop() {
+    return items.back()->name == "BLOCK_STOP" ? false : true;
+}
+
+int StatSemStack::getItemsSize() {
+    return items.size();
 }
