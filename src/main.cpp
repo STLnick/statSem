@@ -54,7 +54,11 @@ int main(int argc, char **argv) {
     StatSemStack stack;
     statSem(root, stack, 0);
 
-    std::cout << "\n\nFile parsed successfully! Booyah!\n\n";
+
+    /* ------------------------------------ */
+    // Awesome Success Message
+    /* ------------------------------------ */
+    std::cout << getRandomSuccessMessage();
 
     // Free memory
     free(scanner);
