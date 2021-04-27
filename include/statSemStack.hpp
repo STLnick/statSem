@@ -10,13 +10,8 @@
 class StatSemStack {
 private:
     std::vector<StatSemStackItem*> items;
-    bool hasNotBeenSetFalse;
-    bool isGlobal;
 public:
     StatSemStack();
-    bool getHasNotBeenSetFalse();
-    void setHasNotBeenSetFalse(bool val);
-    void setIsGlobal(bool val);
     void push(StatSemStackItem *newItem);
     void pushBlock();
     void pop();

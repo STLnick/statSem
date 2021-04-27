@@ -52,15 +52,12 @@ int main(int argc, char **argv) {
     // Static Semantics
     /* ------------------------------------ */
     StatSemStack stack;
-    std::cout << "main() 1" << std::endl;
     statSem(root, stack, 0);
-    std::cout << "main() 2" << std::endl;
-
 
     /* ------------------------------------ */
     // Awesome Success Message
     /* ------------------------------------ */
-    std::cout << getRandomSuccessMessage();
+    std::cout << std::endl << getRandomSuccessMessage() << std::endl << std::endl;
 
     // Free memory
     free(scanner);

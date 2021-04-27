@@ -8,10 +8,6 @@
 #include "statSemStack.hpp"
 #include "statSemStackItem.hpp"
 
-bool hasPassedMainToken(node *treeNode) {
-    return treeNode->label == "program_nt" && treeNode->tokens[0].stringVal == "main";
-}
-
 // dup error by default --- not declared error will require 3rd arg of 1
 void printErrorAndExit(std::string varName, int line, bool isDuplicateError = true) {
     if (isDuplicateError) {
@@ -25,9 +21,7 @@ void printErrorAndExit(std::string varName, int line, bool isDuplicateError = tr
 
 void statSem(node *treeNode, StatSemStack &stack, int level) {
     if (treeNode->label == "block_nt") {
-        std::cout << "Pre pushBlock()" << std::endl;
         stack.pushBlock();
-        std::cout << "Post pushBlock()" << std::endl;
     }
 
     if (treeNode->label == "vars_nt") {
@@ -63,15 +57,6 @@ void statSem(node *treeNode, StatSemStack &stack, int level) {
         statSem(treeNode->ntOne, stack, level + 1);
     }
 
-    std::cout << ">>> 1" << std::endl;
-
-    // Check after first node to allow <program> to process first set of <vars>
-    if (stack.getHasNotBeenSetFalse() && hasPassedMainToken(treeNode)) {
-        stack.setHasNotBeenSetFalse(false);
-        stack.setIsGlobal(false);
-    }
-
-    std::cout << ">>> 2" << std::endl;
     if (treeNode->ntTwo != NULL) {
         statSem(treeNode->ntTwo, stack, level + 1);
     }

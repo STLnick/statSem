@@ -7,22 +7,7 @@
 #include "statSem.hpp"
 #include "statSemStack.hpp"
 
-StatSemStack::StatSemStack() {
-        hasNotBeenSetFalse = true;
-        isGlobal = true;
-    }
-
-bool StatSemStack::getHasNotBeenSetFalse() {
-    return hasNotBeenSetFalse;
-}
-
-void StatSemStack::setHasNotBeenSetFalse(bool val) {
-    hasNotBeenSetFalse = val;
-}
-
-void StatSemStack::setIsGlobal(bool val) {
-    isGlobal = val;
-}
+StatSemStack::StatSemStack() {}
 
 void StatSemStack::push(StatSemStackItem *newItem) {
     items.push_back(newItem);
